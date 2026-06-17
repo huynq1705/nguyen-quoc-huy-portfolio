@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio Concept — Frontend Developer · 3 năm kinh nghiệm</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0 }
+
+    :root {
+      --bg: #06060f;
+      --surface: #0e0e1a;
+      --surface-2: #141428;
+      --border: rgba(255,255,255,0.07);
+      --text: #e8eaf0;
+      --muted: #8b92a8;
+      --accent-1: #7c3aed;
+      --accent-2: #3b82f6;
+      --accent-3: #06b6d4;
+      --accent-4: #84cc16;
+      --gradient: linear-gradient(135deg, #7c3aed 0%, #3b82f6 45%, #06b6d4 100%);
+      --gradient-soft: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(59,130,246,0.1), rgba(6,182,212,0.08));
+      --glow: 0 0 80px rgba(124,58,237,0.25);
+      --radius: 16px;
+      --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-body: 'Instrument Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Ambient background */
+    .ambient {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .ambient__orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.35;
+      animation: float 20s ease-in-out infinite;
+    }
+    .ambient__orb--1 { width: 600px; height: 600px; background: #7c3aed; top: -200px; left: -100px }
+    .ambient__orb--2 { width: 500px; height: 500px; background: #3b82f6; top: 40%; right: -150px; animation-delay: -7s }
+    .ambient__orb--3 { width: 400px; height: 400px; background: #06b6d4; bottom: -100px; left: 30%; animation-delay: -14s }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1) }
+      33% { transform: translate(30px, -40px) scale(1.05) }
+      66% { transform: translate(-20px, 20px) scale(0.95) }
+    }
+
+    /* Grid overlay */
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black, transparent);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Nav */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      background: rgba(6,6,15,0.7);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.1rem;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text) }
+    .badge-concept {
+      font-size: 0.7rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(124,58,237,0.15);
+      border: 1px solid rgba(124,58,237,0.3);
+      color: #a78bfa;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 100px 0 80px;
+      text-align: center;
+    }
+    .hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: var(--gradient-soft);
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+    .hero__eyebrow .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent-4);
+      animation: pulse 2s ease infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1) }
+      50% { opacity: 0.5; transform: scale(0.8) }
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+    .hero h1 .gradient-text {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero__sub {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 640px;
+      margin: 0 auto 40px;
+    }
+    .hero__stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+      margin-top: 48px;
+    }
+    .stat { text-align: center }
+    .stat__num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat__label { font-size: 0.8rem; color: var(--muted); margin-top: 4px }
+
+    /* Section */
+    section { padding: 80px 0 }
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-1);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      color: var(--muted);
+      max-width: 600px;
+      margin-bottom: 48px;
+    }
+
+    /* Concept cards */
+    .concept-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 900px) { .concept-grid { grid-template-columns: 1fr } }
+
+    .concept-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .concept-card:hover {
+      border-color: rgba(124,58,237,0.3);
+      transform: translateY(-4px);
+      box-shadow: var(--glow);
+    }
+    .concept-card__icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 16px;
+    }
+    .concept-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .concept-card p { font-size: 0.9rem; color: var(--muted) }
+
+    /* Bento grid - projects */
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: minmax(120px, auto);
+      gap: 16px;
+    }
+    .bento-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .bento-item:hover {
+      border-color: rgba(59,130,246,0.3);
+      transform: translateY(-2px);
+    }
+    .bento-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-soft);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .bento-item:hover::before { opacity: 1 }
+    .bento-item > * { position: relative; z-index: 1 }
+
+    .bento-item--hero { grid-column: span 7; grid-row: span 2; min-height: 320px }
+    .bento-item--tall { grid-column: span 5; grid-row: span 2 }
+    .bento-item--wide { grid-column: span 6 }
+    .bento-item--small { grid-column: span 3 }
+    .bento-item--medium { grid-column: span 4 }
+
+    @media (max-width: 900px) {
+      .bento-item--hero,
+      .bento-item--tall,
+      .bento-item--wide,
+      .bento-item--small,
+      .bento-item--medium { grid-column: span 12 }
+    }
+
+    .project-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .tag-purple { background: rgba(124,58,237,0.15); color: #a78bfa }
+    .tag-blue { background: rgba(59,130,246,0.15); color: #60a5fa }
+    .tag-cyan { background: rgba(6,182,212,0.15); color: #22d3ee }
+    .tag-lime { background: rgba(132,204,22,0.15); color: #a3e635 }
+
+    .bento-item h3 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .bento-item p { font-size: 0.875rem; color: var(--muted); margin-bottom: 16px }
+    .tech-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .chip {
+      font-size: 0.7rem;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+    .highlight-list {
+      list-style: none;
+      margin-top: 12px;
+    }
+    .highlight-list li {
+      font-size: 0.8rem;
+      color: var(--muted);
+      padding: 4px 0;
+      padding-left: 16px;
+      position: relative;
+    }
+    .highlight-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent-1);
+    }
+
+    /* Site map */
+    .sitemap {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    @media (max-width: 768px) { .sitemap { grid-template-columns: repeat(2, 1fr) } }
+
+    .sitemap-item {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .sitemap-item:hover { transform: scale(1.03) }
+    .sitemap-item__num {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 800;
+      opacity: 0.2;
+      margin-bottom: 8px;
+    }
+    .sitemap-item h4 {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .sitemap-item p { font-size: 0.75rem; color: var(--muted) }
+
+    /* Design tokens */
+    .tokens {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 768px) { .tokens { grid-template-columns: 1fr } }
+
+    .token-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+    .token-panel h4 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .color-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .color-swatch {
+      width: 56px;
+      text-align: center;
+    }
+    .color-swatch__box {
+      width: 56px; height: 56px;
+      border-radius: 12px;
+      margin-bottom: 6px;
+      border: 1px solid var(--border);
+    }
+    .color-swatch span { font-size: 0.65rem; color: var(--muted) }
+
+    .font-preview { margin-bottom: 16px }
+    .font-preview .display {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .font-preview .body {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* Tech stack */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px;
+    }
+    .tech-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .tech-item:hover {
+      border-color: rgba(124,58,237,0.3);
+      background: var(--surface-2);
+    }
+    .tech-item span { display: block; font-size: 0.7rem; color: var(--muted); margin-top: 4px }
+
+    /* Questions */
+    .questions {
+      background: var(--gradient-soft);
+      border: 1px solid rgba(124,58,237,0.2);
+      border-radius: var(--radius);
+      padding: 40px;
+      margin-top: 40px;
+    }
+    .questions h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .questions ol {
+      padding-left: 20px;
+      color: var(--muted);
+    }
+    .questions li {
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+    }
+    .questions li strong { color: var(--text) }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    /* Streaming animation demo */
+    .stream-demo {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 16px;
+    }
+    .stream-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent-3);
+      animation: stream 1.4s ease infinite;
+    }
+    .stream-dot:nth-child(2) { animation-delay: 0.2s }
+    .stream-dot:nth-child(3) { animation-delay: 0.4s }
+    @keyframes stream {
+      0%, 80%, 100% { opacity: 0.2; transform: scale(0.8) }
+      40% { opacity: 1; transform: scale(1.2) }
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient" aria-hidden="true">
+    <div class="ambient__orb ambient__orb--1"></div>
+    <div class="ambient__orb ambient__orb--2"></div>
+    <div class="ambient__orb ambient__orb--3"></div>
+  </div>
+  <div class="grid-overlay" aria-hidden="true"></div>
+
+  <nav>
+    <div class="wrap">
+      <div class="logo">[Tên bạn]</div>
+      <ul class="nav-links">
+        <li><a href="#concept">Concept</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#structure">Structure</a></li>
+        <li><a href="#design">Design</a></li>
+        <li><a href="#tech">Tech</a></li>
+      </ul>
+      <span class="badge-concept">Design Overview</span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero wrap">
+    <div class="hero__eyebrow">
+      <span class="dot"></span>
+      Portfolio Concept · Frontend Developer · 3 năm kinh nghiệm
+    </div>
+    <h1>
+      Xây dựng giao diện<br />
+      <span class="gradient-text">AI SaaS Enterprise</span>
+    </h1>
+    <p class="hero__sub">
+      Từ streaming chat RAG đến slide builder AI — portfolio này thể hiện kinh nghiệm thiết kế và phát triển
+      các sản phẩm phức tạp, đa tenant, real-time, với UX tinh tế cho doanh nghiệp.
+    </p>
+    <div class="hero__stats">
+      <div class="stat">
+        <div class="stat__num">5</div>
+        <div class="stat__label">Sản phẩm lớn</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">3+</div>
+        <div class="stat__label">Năm kinh nghiệm</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">2</div>
+        <div class="stat__label">Hệ sinh thái AI</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">EN/JA</div>
+        <div class="stat__label">Đa ngôn ngữ</div>
+      </div>
+    </div>
+  </header>
+
+  <hr class="divider" />
+
+  <!-- CONCEPT -->
+  <section id="concept" class="wrap">
+    <p class="section-label">01 — Design Direction</p>
+    <h2 class="section-title">Ý tưởng thiết kế portfolio</h2>
+    <p class="section-desc">
+      Kết hợp DNA thị giác từ 2 hệ sinh thái bạn đã xây dựng: gradient tím–indigo của Smart Slide
+      và dark enterprise của MRAG — tạo portfolio cá nhân độc đáo, không giống template generic.
+    </p>
+
+    <div class="concept-grid">
+      <div class="concept-card">
+        <div class="concept-card__icon" style="background:rgba(124,58,237,0.15)">🎨</div>
+        <h3>Dark + Gradient Accent</h3>
+        <p>Nền tối sâu (#06060f) với gradient tím → xanh → cyan. Glassmorphism nhẹ, glow orb ambient — lấy cảm hứng từ Smart Slide hero và MRAG User dark mode.</p>
+      </div>
+      <div class="concept-card">
+        <div class="concept-card__icon" style="background:rgba(59,130,246,0.15)">📐</div>
+        <h3>Bento Grid Layout</h3>
+        <p>Layout dạng bento box hiện đại — mỗi project là một "tile" với kích thước khác nhau theo mức độ quan trọng. Responsive, scroll-driven reveal animation.</p>
+      </div>
+      <div class="concept-card">
+        <div class="concept-card__icon" style="background:rgba(6,182,212,0.15)">⚡</div>
+        <h3>Micro-interactions AI</h3>
+        <p>Typewriter effect, streaming dots, particle float — những pattern bạn đã implement trong creating screen & chat streaming, dùng làm signature cho portfolio.</p>
+      </div>
+      <div class="concept-card">
+        <div class="concept-card__icon" style="background:rgba(132,204,22,0.15)">🧩</div>
+        <h3>Case Study sâu</h3>
+        <p>Mỗi project có trang riêng: Problem → Solution → Tech highlights → Screenshots → Lessons learned. Không chỉ show ảnh mà kể story kỹ thuật.</p>
+      </div>
+      <div class="concept-card">
+        <div class="concept-card__icon" style="background:rgba(245,158,11,0.15)">🌐</div>
+        <h3>Bilingual VI/EN</h3>
+        <p>Toggle ngôn ngữ — phản ánh kinh nghiệm i18n thực tế (EN/JA) từ các project. Mặc định tiếng Việt, EN cho recruiter quốc tế.</p>
+      </div>
+      <div class="concept-card">
+        <div class="concept-card__icon" style="background:rgba(236,72,153,0.15)">📱</div>
+        <h3>Mobile-first</h3>
+        <p>Responsive từ mobile → ultrawide (5xl breakpoint như MRAG User). Sidebar collapse, touch-friendly, gesture-aware.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- PROJECTS -->
+  <section id="projects" class="wrap">
+    <p class="section-label">02 — Featured Work</p>
+    <h2 class="section-title">Breakdown từ các project thực tế</h2>
+    <p class="section-desc">
+      5 sản phẩm được nhóm thành 2 hệ sinh thái — thể hiện breadth (nhiều loại UI) và depth (complexity) của kinh nghiệm frontend.
+    </p>
+
+    <div class="bento">
+      <!-- Smart Slide - Hero -->
+      <div class="bento-item bento-item--hero">
+        <span class="project-tag tag-purple">Flagship · AI SaaS</span>
+        <h3>MCBuilder / Smart Slide</h3>
+        <p>Nền tảng AI tạo presentation chuyên nghiệp — từ ý tưởng đến slide hoàn chỉnh trong 2 phút. Monorepo Next.js 16 + React 19.</p>
+        <ul class="highlight-list">
+          <li>3 editor engines: TipTap, ProseMirror, Monaco</li>
+          <li>Dynamic slide engine (semantic blocks + density modes)</li>
+          <li>Runtime JSX compilation với Babel + Recharts</li>
+          <li>SSE streaming AI generation + edit panel</li>
+          <li>Export PDF/PPTX qua Puppeteer server-side</li>
+          <li>Multi-workspace, RBAC sharing, i18n EN/JA</li>
+        </ul>
+        <div class="tech-chips" style="margin-top:16px">
+          <span class="chip">Next.js 16</span>
+          <span class="chip">React 19</span>
+          <span class="chip">Redux + React Query</span>
+          <span class="chip">Framer Motion</span>
+          <span class="chip">shadcn/ui</span>
+          <span class="chip">TipTap</span>
+          <span class="chip">Monaco</span>
+          <span class="chip">Puppeteer</span>
+        </div>
+      </div>
+
+      <!-- MRAG User -->
+      <div class="bento-item bento-item--tall">
+        <span class="project-tag tag-lime">End-user · RAG Chat</span>
+        <h3>MRAG User UI</h3>
+        <p>Enterprise RAG chat — white-label, multi-mode AI, SSE streaming realtime.</p>
+        <ul class="highlight-list">
+          <li>SSE streaming + typing animation</li>
+          <li>Agent processing tree visualization</li>
+          <li>Document viewer 5+ formats</li>
+          <li>Smart Slide iframe panel</li>
+          <li>Voice input (WaveSurfer)</li>
+          <li>Google Drive integration</li>
+        </ul>
+        <div class="stream-demo" aria-label="Streaming animation">
+          <span class="stream-dot"></span>
+          <span class="stream-dot"></span>
+          <span class="stream-dot"></span>
+        </div>
+        <div class="tech-chips" style="margin-top:16px">
+          <span class="chip">Next.js 15</span>
+          <span class="chip">Zustand</span>
+          <span class="chip">next-intl</span>
+          <span class="chip">pdfjs</span>
+        </div>
+      </div>
+
+      <!-- MRAG Admin -->
+      <div class="bento-item bento-item--wide">
+        <span class="project-tag tag-blue">Admin · RAG Config</span>
+        <h3>MRAG Admin UI</h3>
+        <p>Admin console cấu hình AI assistant, knowledge base, widget nhúng website.</p>
+        <div class="tech-chips">
+          <span class="chip">React 18</span>
+          <span class="chip">Vite 7</span>
+          <span class="chip">TanStack Table</span>
+          <span class="chip">Milkdown</span>
+          <span class="chip">SSE PreviewChat</span>
+        </div>
+      </div>
+
+      <!-- MRAG Superadmin -->
+      <div class="bento-item bento-item--medium">
+        <span class="project-tag tag-blue">Superadmin · Control Plane</span>
+        <h3>MRAG Superadmin</h3>
+        <p>Multi-tenant control plane: credit economy, use case templates, provider routing.</p>
+        <div class="tech-chips">
+          <span class="chip">ApexCharts</span>
+          <span class="chip">DnD Providers</span>
+          <span class="chip">TipTap</span>
+        </div>
+      </div>
+
+      <!-- Ecosystem summary -->
+      <div class="bento-item bento-item--medium">
+        <span class="project-tag tag-cyan">Ecosystem</span>
+        <h3>MRAG Platform</h3>
+        <p>3 tầng UI (User → Admin → Superadmin) + Smart Slide integration — full-stack frontend cho hệ sinh thái AI enterprise.</p>
+      </div>
+
+      <!-- Metrics -->
+      <div class="bento-item bento-item--small">
+        <h3 style="font-size:1.1rem">400+</h3>
+        <p>UI Components tự xây</p>
+      </div>
+      <div class="bento-item bento-item--small">
+        <h3 style="font-size:1.1rem">34+</h3>
+        <p>API Service modules</p>
+      </div>
+      <div class="bento-item bento-item--small">
+        <h3 style="font-size:1.1rem">5+</h3>
+        <p>Document viewers</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- STRUCTURE -->
+  <section id="structure" class="wrap">
+    <p class="section-label">03 — Site Structure</p>
+    <h2 class="section-title">Cấu trúc trang portfolio</h2>
+    <p class="section-desc">Đề xuất 8 section chính — scroll-driven single page hoặc multi-page tùy preference.</p>
+
+    <div class="sitemap">
+      <div class="sitemap-item">
+        <div class="sitemap-item__num">01</div>
+        <h4>Hero</h4>
+        <p>Tên, role, typewriter tagline, CTA download CV</p>
+      </div>
+      <div class="sitemap-item">
+        <div class="sitemap-item__num">02</div>
+        <h4>About</h4>
+        <p>Bio ngắn, timeline 3 năm, soft skills</p>
+      </div>
+      <div class="sitemap-item">
+        <div class="sitemap-item__num">03</div>
+        <h4>Projects</h4>
+        <p>Bento grid → click vào case study chi tiết</p>
+      </div>
+      <div class="sitemap-item">
+        <div class="sitemap-item__num">04</div>
+        <h4>Expertise</h4>
+        <p>Skills grouped: UI/UX, State, Real-time, Editors</p>
+      </div>
+      <div class="sitemap-item">
+        <div class="sitemap-item__num">05</div>
+        <h4>Process</h4>
+        <p>Workflow: Research → Design → Build → Ship</p>
+      </div>
+      <div class="sitemap-item">
+        <div class="sitemap-item__num">06</div>
+        <h4>Tech Stack</h4>
+        <p>Interactive grid với proficiency level</p>
+      </div>
+      <div class="sitemap-item">
+        <div class="sitemap-item__num">07</div>
+        <h4>Testimonials</h4>
+        <p>Feedback từ team lead / PM (nếu có)</p>
+      </div>
+      <div class="sitemap-item">
+        <div class="sitemap-item__num">08</div>
+        <h4>Contact</h4>
+        <p>Form + social links + email</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- DESIGN TOKENS -->
+  <section id="design" class="wrap">
+    <p class="section-label">04 — Design System</p>
+    <h2 class="section-title">Design tokens đề xuất</h2>
+    <p class="section-desc">Hợp nhất palette từ Smart Slide (purple) và MRAG (blue/teal) thành identity riêng.</p>
+
+    <div class="tokens">
+      <div class="token-panel">
+        <h4>Color Palette</h4>
+        <div class="color-row">
+          <div class="color-swatch">
+            <div class="color-swatch__box" style="background:#06060f"></div>
+            <span>BG</span>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch__box" style="background:#7c3aed"></div>
+            <span>Accent 1</span>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch__box" style="background:#3b82f6"></div>
+            <span>Accent 2</span>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch__box" style="background:#06b6d4"></div>
+            <span>Accent 3</span>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch__box" style="background:#84cc16"></div>
+            <span>Accent 4</span>
+          </div>
+          <div class="color-swatch">
+            <div class="color-swatch__box" style="background:linear-gradient(135deg,#7c3aed,#3b82f6,#06b6d4)"></div>
+            <span>Gradient</span>
+          </div>
+        </div>
+        <p style="font-size:0.8rem;color:var(--muted)">
+          Semantic: Success #10b981 · Error #ff6a55 · Warning #f59e0b (từ MRAG Admin)
+        </p>
+      </div>
+
+      <div class="token-panel">
+        <h4>Typography</h4>
+        <div class="font-preview">
+          <div class="display">Plus Jakarta Sans</div>
+          <div class="body">Headlines · Bold 700–800 · Letter-spacing -0.03em</div>
+        </div>
+        <div class="font-preview">
+          <div class="display" style="font-family:var(--font-body);font-weight:600;font-size:1.25rem">Instrument Sans</div>
+          <div class="body">Body text · Regular 400–500 · Line-height 1.6</div>
+        </div>
+        <p style="font-size:0.8rem;color:var(--muted);margin-top:12px">
+          Code/mono: JetBrains Mono cho tech highlights
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- TECH -->
+  <section id="tech" class="wrap">
+    <p class="section-label">05 — Tech Arsenal</p>
+    <h2 class="section-title">Stack tổng hợp từ 5 project</h2>
+    <p class="section-desc">Những công nghệ bạn đã sử dụng thực tế — không phải list copy từ job description.</p>
+
+    <div class="tech-grid">
+      <div class="tech-item">React 19<span>Smart Slide, MRAG User</span></div>
+      <div class="tech-item">Next.js 16<span>App Router, SSR</span></div>
+      <div class="tech-item">TypeScript<span>All projects</span></div>
+      <div class="tech-item">Tailwind CSS<span>Design system</span></div>
+      <div class="tech-item">Framer Motion<span>Animations</span></div>
+      <div class="tech-item">Zustand<span>Client state</span></div>
+      <div class="tech-item">Redux Toolkit<span>Complex editors</span></div>
+      <div class="tech-item">React Query<span>Server state</span></div>
+      <div class="tech-item">shadcn/ui<span>Component lib</span></div>
+      <div class="tech-item">SSE Streaming<span>Real-time AI</span></div>
+      <div class="tech-item">TipTap / ProseMirror<span>Rich text</span></div>
+      <div class="tech-item">Monaco Editor<span>Code editor</span></div>
+      <div class="tech-item">Vite 7<span>Admin panels</span></div>
+      <div class="tech-item">TanStack Table<span>Data tables</span></div>
+      <div class="tech-item">i18next<span>EN/JA i18n</span></div>
+      <div class="tech-item">Zod + RHF<span>Form validation</span></div>
+      <div class="tech-item">pdfjs / docx<span>Doc viewers</span></div>
+      <div class="tech-item">Docker / CI<span>GitLab → GKE</span></div>
+    </div>
+
+    <!-- Questions -->
+    <div class="questions">
+      <h3>📋 Cần bạn xác nhận trước khi build</h3>
+      <ol>
+        <li><strong>Tên hiển thị</strong> — Tên đầy đủ / nickname cho hero section?</li>
+        <li><strong>Ảnh cá nhân</strong> — Có muốn đặt avatar/photo không, hay chỉ dùng typography?</li>
+        <li><strong>Ngôn ngữ mặc định</strong> — Tiếng Việt, English, hay bilingual toggle?</li>
+        <li><strong>Thông tin liên hệ</strong> — Email, GitHub, LinkedIn, phone?</li>
+        <li><strong>CV/Resume</strong> — Có file PDF sẵn để link download không?</li>
+        <li><strong>Case study depth</strong> — Mỗi project 1 trang riêng hay tất cả trên single page?</li>
+        <li><strong>Screenshots</strong> — Bạn có thể cung cấp screenshot từ các project (hoặc tôi dùng placeholder)?</li>
+        <li><strong>NDA</strong> — Các project enterprise có cần anonymize tên công ty không?</li>
+        <li><strong>Tech stack build</strong> — Next.js (như Smart Slide) hay Vite + React (như MRAG Admin)?</li>
+        <li><strong>Hosting</strong> — Vercel, GitHub Pages, hay self-host?</li>
+      </ol>
+    </div>
+  </section>
+
+  <footer class="wrap">
+    <p>Portfolio Concept Overview — Generated from analysis of fe-smart-slide, mrag-admin-ui, mrag-user-ui, mrag-superadmin-ui</p>
+    <p style="margin-top:8px;opacity:0.5">Mở file này trong browser để xem preview · Bước tiếp theo: confirm requirements → build production version</p>
+  </footer>
+
+</body>
+</html>

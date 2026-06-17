@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-body: "Instrument Sans", system-ui, sans-serif;
+  --color-bg: #06060f;
+  --color-surface: #0e0e1a;
+  --color-surface-2: #141428;
+  --color-border: rgba(255, 255, 255, 0.07);
+  --color-text: #e8eaf0;
+  --color-muted: #8b92a8;
+  --color-accent-1: #7c3aed;
+  --color-accent-2: #3b82f6;
+  --color-accent-3: #06b6d4;
+  --color-accent-4: #84cc16;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    background: linear-gradient(135deg, #7c3aed 0%, #3b82f6 45%, #06b6d4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-border {
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+  }
+
+  .glass {
+    background: rgba(14, 14, 26, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--color-border);
+  }
+}
+
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  nav,
+  footer {
+    display: none !important;
+  }
+
+  #cv-content {
+    border: none !important;
+    padding: 0 !important;
+  }
+}

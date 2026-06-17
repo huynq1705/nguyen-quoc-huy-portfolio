@@ -1,0 +1,99 @@
+{
+  "meta": {
+    "title": "Nguyen Quoc Huy — Front-end Developer",
+    "description": "Portfolio of Nguyen Quoc Huy — Front-end Developer with 3 years of experience, specializing in AI SaaS & Enterprise UI"
+  },
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "cv": "CV",
+    "contact": "Contact"
+  },
+  "hero": {
+    "eyebrow": "Front-end Developer · 3 years experience",
+    "title": "Building interfaces for",
+    "titleAccent": "AI SaaS Enterprise",
+    "subtitle": "From RAG streaming chat to AI slide builders — I design and develop complex, multi-tenant, real-time products with refined enterprise UX.",
+    "ctaProjects": "View Projects",
+    "ctaCv": "View CV",
+    "ctaContact": "Contact"
+  },
+  "stats": {
+    "projects": "Major Projects",
+    "experience": "Years Experience",
+    "ecosystems": "AI Ecosystems",
+    "i18n": "Multilingual"
+  },
+  "about": {
+    "label": "About",
+    "title": "About Me"
+  },
+  "experience": {
+    "label": "Experience",
+    "title": "Career Journey",
+    "subtitle": "3 years building AI SaaS products & enterprise management software",
+    "viewCv": "View full CV"
+  },
+  "expertise": {
+    "label": "Expertise",
+    "title": "Core Strengths",
+    "items": {
+      "ai": { "title": "AI & Streaming UX", "desc": "SSE streaming, typing animation, agent processing visualization" },
+      "editors": { "title": "Complex Editors", "desc": "TipTap, ProseMirror, Monaco — rich text & code editing" },
+      "enterprise": { "title": "Enterprise Admin", "desc": "Multi-tenant, RBAC, data tables, dashboard analytics" },
+      "i18n": { "title": "Internationalization", "desc": "EN/JA/VI — routing, middleware, translation management" }
+    }
+  },
+  "projects": {
+    "label": "Projects",
+    "title": "Products Built",
+    "subtitle": "Enterprise & AI SaaS projects deployed to production",
+    "viewAll": "View All",
+    "viewCase": "View Details",
+    "tech": "Technologies",
+    "highlights": "Highlights",
+    "problem": "Problem",
+    "solution": "Solution",
+    "impact": "Impact",
+    "lessons": "Lessons Learned",
+    "role": "Role",
+    "back": "Back to Projects",
+    "category": {
+      "ai": "AI SaaS",
+      "enterprise": "Enterprise",
+      "cms": "CMS & Web"
+    }
+  },
+  "tech": {
+    "label": "Tech Stack",
+    "title": "Technologies Used"
+  },
+  "cv": {
+    "label": "CV",
+    "title": "Curriculum Vitae",
+    "subtitle": "Detailed information about experience, skills, and education",
+    "download": "Download CV PDF",
+    "experience": "Experience",
+    "education": "Education",
+    "skills": "Skills",
+    "languages": "Programming Languages",
+    "frameworks": "Frameworks & Libraries",
+    "tools": "Tools",
+    "featuredProjects": "Featured Projects",
+    "contact": "Contact Information",
+    "present": "Present"
+  },
+  "contact": {
+    "label": "Contact",
+    "title": "Get in Touch",
+    "subtitle": "Open to discussing collaboration opportunities or new projects",
+    "email": "Email",
+    "phone": "Phone",
+    "location": "Location",
+    "send": "Send Email"
+  },
+  "footer": {
+    "built": "Built with Next.js & Tailwind CSS",
+    "rights": "All rights reserved"
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "meta": {
+    "title": "Nguyen Quoc Huy — Front-end Developer",
+    "description": "Portfolio của Nguyen Quoc Huy — Front-end Developer 3 năm kinh nghiệm, chuyên AI SaaS & Enterprise UI"
+  },
+  "nav": {
+    "home": "Trang chủ",
+    "projects": "Dự án",
+    "cv": "CV",
+    "contact": "Liên hệ"
+  },
+  "hero": {
+    "eyebrow": "Front-end Developer · 3 năm kinh nghiệm",
+    "title": "Xây dựng giao diện",
+    "titleAccent": "AI SaaS Enterprise",
+    "subtitle": "Từ streaming chat RAG đến slide builder AI — tôi thiết kế và phát triển các sản phẩm phức tạp, đa tenant, real-time với UX tinh tế cho doanh nghiệp.",
+    "ctaProjects": "Xem dự án",
+    "ctaCv": "Xem CV",
+    "ctaContact": "Liên hệ"
+  },
+  "stats": {
+    "projects": "Dự án lớn",
+    "experience": "Năm kinh nghiệm",
+    "ecosystems": "Hệ sinh thái AI",
+    "i18n": "Đa ngôn ngữ"
+  },
+  "about": {
+    "label": "Giới thiệu",
+    "title": "Về tôi"
+  },
+  "experience": {
+    "label": "Kinh nghiệm",
+    "title": "Hành trình nghề nghiệp",
+    "subtitle": "3 năm xây dựng sản phẩm AI SaaS & phần mềm quản lý enterprise",
+    "viewCv": "Xem CV đầy đủ"
+  },
+  "expertise": {
+    "label": "Chuyên môn",
+    "title": "Lĩnh vực mạnh",
+    "items": {
+      "ai": { "title": "AI & Streaming UX", "desc": "SSE streaming, typing animation, agent processing visualization" },
+      "editors": { "title": "Complex Editors", "desc": "TipTap, ProseMirror, Monaco — rich text & code editing" },
+      "enterprise": { "title": "Enterprise Admin", "desc": "Multi-tenant, RBAC, data tables, dashboard analytics" },
+      "i18n": { "title": "Internationalization", "desc": "EN/JA/VI — routing, middleware, translation management" }
+    }
+  },
+  "projects": {
+    "label": "Dự án",
+    "title": "Sản phẩm đã xây dựng",
+    "subtitle": "Các dự án enterprise & AI SaaS đã triển khai production",
+    "viewAll": "Xem tất cả",
+    "viewCase": "Xem chi tiết",
+    "tech": "Công nghệ",
+    "highlights": "Điểm nổi bật",
+    "problem": "Vấn đề",
+    "solution": "Giải pháp",
+    "impact": "Kết quả",
+    "lessons": "Bài học",
+    "role": "Vai trò",
+    "back": "Quay lại dự án",
+    "category": {
+      "ai": "AI SaaS",
+      "enterprise": "Enterprise",
+      "cms": "CMS & Web"
+    }
+  },
+  "tech": {
+    "label": "Tech Stack",
+    "title": "Công nghệ sử dụng"
+  },
+  "cv": {
+    "label": "CV",
+    "title": "Hồ sơ năng lực",
+    "subtitle": "Thông tin chi tiết về kinh nghiệm, kỹ năng và học vấn",
+    "download": "Tải CV PDF",
+    "experience": "Kinh nghiệm",
+    "education": "Học vấn",
+    "skills": "Kỹ năng",
+    "languages": "Ngôn ngữ lập trình",
+    "frameworks": "Frameworks & Libraries",
+    "tools": "Công cụ",
+    "featuredProjects": "Dự án tiêu biểu",
+    "contact": "Thông tin liên hệ",
+    "present": "Hiện tại"
+  },
+  "contact": {
+    "label": "Liên hệ",
+    "title": "Kết nối với tôi",
+    "subtitle": "Sẵn sàng thảo luận về cơ hội hợp tác hoặc dự án mới",
+    "email": "Email",
+    "phone": "Điện thoại",
+    "location": "Địa chỉ",
+    "send": "Gửi email"
+  },
+  "footer": {
+    "built": "Được xây dựng với Next.js & Tailwind CSS",
+    "rights": "Bảo lưu mọi quyền"
+  }
+}
