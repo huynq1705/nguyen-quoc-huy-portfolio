@@ -2,13 +2,15 @@
 
 Personal portfolio website built with Next.js 15, TypeScript, Tailwind CSS, and next-intl.
 
+**Live:** [nguyen-quoc-huy-portfolio.vercel.app](https://nguyen-quoc-huy-portfolio.vercel.app) *(sau khi deploy)*
+
 ## Features
 
 - Bilingual VI/EN toggle
 - Dark theme with gradient accents
-- Project case studies (NDA-safe)
-- Interactive CV page with print/download
-- Contact section
+- Interactive project showcases with UI mockups
+- Experience timeline & CV page (print to PDF)
+- Fully responsive layout
 
 ## Development
 
@@ -21,16 +23,15 @@ Open [http://localhost:3000](http://localhost:3000)
 
 ## Deploy to Vercel
 
-```bash
-npx vercel
-```
+Connect this repo to [Vercel](https://vercel.com) or run:
 
-Or connect the GitHub repo to Vercel dashboard.
+```bash
+npx vercel --prod
+```
 
 ## Structure
 
-- `/` — Home with hero, about, expertise, featured projects
-- `/projects` — All projects grid
-- `/projects/[slug]` — Case study detail
+- `/` — Home with hero, experience, featured projects
+- `/projects` — All projects showcase
 - `/cv` — Interactive CV (print to PDF)
 - `/contact` — Contact information
