@@ -5,6 +5,7 @@ import { routing } from '@/i18n/routing'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { AmbientBackground } from '@/components/ui/AmbientBackground'
+import { ThemeProvider } from '@/components/providers/ThemeProvider'
 import '../globals.css'
 
 export const generateStaticParams = () =>
@@ -26,7 +27,7 @@ const LocaleLayout = async ({ children, params }: Props) => {
   const messages = await getMessages()
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -36,12 +37,14 @@ const LocaleLayout = async ({ children, params }: Props) => {
         />
       </head>
       <body className="antialiased">
-        <NextIntlClientProvider messages={messages}>
-          <AmbientBackground />
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-        </NextIntlClientProvider>
+        <ThemeProvider>
+          <NextIntlClientProvider messages={messages}>
+            <AmbientBackground />
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+          </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   )

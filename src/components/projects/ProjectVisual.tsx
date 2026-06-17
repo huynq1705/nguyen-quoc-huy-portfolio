@@ -197,8 +197,7 @@ const ProjectVisual = ({ slug, category }: ProjectVisualProps) => {
 
   return (
     <div
-      className="relative h-full min-h-[220px] overflow-hidden rounded-2xl ring-1 ring-white/10 sm:min-h-[280px]"
-      style={{ background: `linear-gradient(135deg, ${accent.from}18, ${accent.to}08)` }}
+      className="relative h-full min-h-[220px] overflow-hidden rounded-2xl bg-[#0c0f1a] ring-1 ring-[var(--color-visual-ring)] sm:min-h-[280px]"
     >
       <div
         className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full blur-3xl"

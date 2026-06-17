@@ -73,7 +73,7 @@ const CvPage = ({ locale }: CvPageProps) => {
                 <div className="absolute -left-[7px] top-1.5 h-3 w-3 rounded-full border-2 border-[var(--color-bg)] bg-[var(--color-accent-1)] print:border-white print:bg-blue-600" />
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
                   <h3 className="text-lg font-bold print:text-black">{exp.role[locale]}</h3>
-                  <span className="rounded-full bg-[rgba(124,58,237,0.12)] px-3 py-0.5 text-xs font-semibold text-[var(--color-accent-1)] print:bg-blue-50 print:text-blue-700">
+                  <span className="rounded-full bg-[var(--color-accent-soft)] px-3 py-0.5 text-xs font-semibold text-[var(--color-accent-1)] print:bg-blue-50 print:text-blue-700">
                     {exp.period[locale]}
                   </span>
                 </div>
@@ -82,7 +82,7 @@ const CvPage = ({ locale }: CvPageProps) => {
                 </p>
                 <div className="mt-2 flex flex-wrap gap-1 print:hidden">
                   {exp.projects[locale].map((proj) => (
-                    <span key={proj} className="rounded bg-[rgba(59,130,246,0.12)] px-2 py-0.5 text-[0.65rem] font-medium text-[#60a5fa]">
+                    <span key={proj} className="rounded bg-[var(--color-tag-bg)] px-2 py-0.5 text-[0.65rem] font-medium text-[var(--color-tag-text)]">
                       {proj}
                     </span>
                   ))}

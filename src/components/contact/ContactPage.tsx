@@ -41,9 +41,9 @@ const ContactPage = ({ locale }: ContactPageProps) => {
         {contacts.map(({ icon: Icon, label, value, href }) => (
           <div
             key={label}
-            className="flex items-center gap-5 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 transition-colors hover:border-[rgba(124,58,237,0.3)]"
+            className="flex items-center gap-5 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 transition-colors hover:border-[var(--color-card-hover-border)]"
           >
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[rgba(124,58,237,0.15)]">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--color-icon-bg)]">
               <Icon size={20} className="text-[var(--color-accent-1)]" />
             </div>
             <div>

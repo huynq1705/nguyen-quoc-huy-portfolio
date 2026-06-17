@@ -26,13 +26,13 @@ const ExperienceSection = ({ locale }: ExperienceSectionProps) => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1, duration: 0.5 }}
-            className="group relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 transition-all duration-300 hover:border-[rgba(124,58,237,0.35)] hover:shadow-[0_0_60px_rgba(124,58,237,0.12)] md:p-8"
+            className="group relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 transition-all duration-300 hover:border-[var(--color-card-hover-border)] hover:shadow-[var(--shadow-glow)] md:p-8"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-[rgba(124,58,237,0.06)] to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-card-hover-gradient)] to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
 
             <div className="relative flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
               <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[rgba(124,58,237,0.15)]">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[var(--color-icon-bg)]">
                   <Briefcase size={22} className="text-[var(--color-accent-1)]" />
                 </div>
                 <div>
@@ -46,7 +46,7 @@ const ExperienceSection = ({ locale }: ExperienceSectionProps) => {
                     {exp.projects[locale].map((proj) => (
                       <span
                         key={proj}
-                        className="rounded-md bg-[rgba(59,130,246,0.12)] px-2 py-0.5 text-[0.65rem] font-medium text-[#60a5fa]"
+                        className="rounded-md bg-[var(--color-tag-bg)] px-2 py-0.5 text-[0.65rem] font-medium text-[var(--color-tag-text)]"
                       >
                         {proj}
                       </span>
@@ -54,7 +54,7 @@ const ExperienceSection = ({ locale }: ExperienceSectionProps) => {
                   </div>
                 </div>
               </div>
-              <span className="shrink-0 rounded-full border border-[var(--color-border)] bg-[rgba(124,58,237,0.08)] px-3 py-1 text-xs font-semibold text-[var(--color-muted)]">
+              <span className="shrink-0 rounded-full border border-[var(--color-border)] bg-[var(--color-period-badge-bg)] px-3 py-1 text-xs font-semibold text-[var(--color-muted)]">
                 {exp.period[locale]}
               </span>
             </div>
@@ -72,7 +72,7 @@ const ExperienceSection = ({ locale }: ExperienceSectionProps) => {
               {exp.tech.map((tech) => (
                 <span
                   key={tech}
-                  className="rounded-md border border-[var(--color-border)] bg-white/5 px-2 py-0.5 text-[0.65rem] text-[var(--color-muted)]"
+                  className="rounded-md border border-[var(--color-chip-border)] bg-[var(--color-chip-bg)] px-2 py-0.5 text-[0.65rem] text-[var(--color-muted)]"
                 >
                   {tech}
                 </span>

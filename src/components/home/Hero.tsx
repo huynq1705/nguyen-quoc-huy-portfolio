@@ -56,7 +56,7 @@ const Hero = ({ locale }: HeroProps) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-[rgba(124,58,237,0.3)] bg-[rgba(124,58,237,0.12)] px-5 py-2 text-sm font-semibold">
+          <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-[var(--color-hero-eyebrow-border)] bg-[var(--color-hero-eyebrow-bg)] px-5 py-2 text-sm font-semibold">
             <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-[var(--color-accent-4)]" />
             <span className="text-[var(--color-text)]">{t('eyebrow')}</span>
             <span className="gradient-text font-bold">· 3+ {locale === 'vi' ? 'năm' : 'yrs'}</span>
@@ -127,7 +127,7 @@ const Hero = ({ locale }: HeroProps) => {
           {expertiseKeys.map((key) => (
             <div
               key={key}
-              className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 transition-colors hover:border-[rgba(124,58,237,0.3)]"
+              className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 transition-colors hover:border-[var(--color-card-hover-border)]"
             >
               <h3 className="font-[family-name:var(--font-display)] font-bold">
                 {tExpertiseItems(`${key}.title`)}
@@ -169,7 +169,7 @@ const Hero = ({ locale }: HeroProps) => {
           {skillCategories.map((cat) => (
             <div
               key={cat.label.en}
-              className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 transition-colors hover:border-[rgba(124,58,237,0.3)]"
+              className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 transition-colors hover:border-[var(--color-card-hover-border)]"
             >
               <h3 className="mb-3 text-xs font-bold uppercase tracking-wider text-[var(--color-accent-1)]">
                 {cat.label[locale]}
@@ -178,7 +178,7 @@ const Hero = ({ locale }: HeroProps) => {
                 {cat.items.map((item) => (
                   <span
                     key={item}
-                    className="rounded-md border border-[var(--color-border)] bg-white/5 px-2 py-0.5 text-[0.7rem] text-[var(--color-muted)]"
+                    className="rounded-md border border-[var(--color-chip-border)] bg-[var(--color-chip-bg)] px-2 py-0.5 text-[0.7rem] text-[var(--color-muted)]"
                   >
                     {item}
                   </span>

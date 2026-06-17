@@ -19,16 +19,16 @@ type ProjectShowcaseProps = {
   }
 }
 
-const categoryColors = {
-  ai: 'from-violet-500/20 to-blue-500/10 border-violet-500/20',
-  enterprise: 'from-blue-500/20 to-cyan-500/10 border-blue-500/20',
-  cms: 'from-cyan-500/20 to-lime-500/10 border-cyan-500/20',
+const categoryCardClass = {
+  ai: 'project-card-ai',
+  enterprise: 'project-card-enterprise',
+  cms: 'project-card-cms',
 }
 
-const categoryBadge = {
-  ai: 'bg-violet-500/15 text-violet-300',
-  enterprise: 'bg-blue-500/15 text-blue-300',
-  cms: 'bg-cyan-500/15 text-cyan-300',
+const categoryBadgeClass = {
+  ai: 'badge-ai',
+  enterprise: 'badge-enterprise',
+  cms: 'badge-cms',
 }
 
 const ProjectShowcase = ({ project, locale, index, labels }: ProjectShowcaseProps) => {
@@ -43,7 +43,7 @@ const ProjectShowcase = ({ project, locale, index, labels }: ProjectShowcaseProp
       transition={{ duration: 0.55, delay: 0.05 }}
       className={cn(
         'overflow-hidden rounded-3xl border bg-gradient-to-br',
-        categoryColors[project.category]
+        categoryCardClass[project.category]
       )}
     >
       <div
@@ -58,14 +58,14 @@ const ProjectShowcase = ({ project, locale, index, labels }: ProjectShowcaseProp
         </div>
 
         {/* Content panel */}
-        <div className="flex flex-col justify-center border-t border-white/5 p-6 sm:p-8 lg:border-l lg:border-t-0">
+        <div className="flex flex-col justify-center border-t border-[var(--color-divider)] p-6 sm:p-8 lg:border-l lg:border-t-0">
           <div className="mb-4 flex flex-wrap items-center gap-2">
-            <span className={cn('rounded-md px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-wider', categoryBadge[project.category])}>
+            <span className={cn('rounded-md px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-wider', categoryBadgeClass[project.category])}>
               {labels.category}
             </span>
             <span className="text-xs text-[var(--color-muted)]">{project.period[locale]}</span>
             {project.featured && (
-              <span className="flex items-center gap-1 rounded-md bg-amber-500/10 px-2 py-0.5 text-[0.65rem] font-semibold text-amber-300">
+              <span className="flex items-center gap-1 rounded-md bg-[var(--color-featured-bg)] px-2 py-0.5 text-[0.65rem] font-semibold text-[var(--color-featured-text)]">
                 <Sparkles size={10} />
                 Featured
               </span>
@@ -82,7 +82,7 @@ const ProjectShowcase = ({ project, locale, index, labels }: ProjectShowcaseProp
             {project.description[locale]}
           </p>
 
-          <div className="mt-5 rounded-xl bg-black/20 p-4 ring-1 ring-white/5">
+          <div className="mt-5 rounded-xl bg-[var(--color-panel-bg)] p-4 ring-1 ring-[var(--color-chip-border)]">
             <p className="mb-1 flex items-center gap-1.5 text-[0.65rem] font-bold uppercase tracking-wider text-[var(--color-accent-1)]">
               <Target size={11} />
               {labels.role}
@@ -113,7 +113,7 @@ const ProjectShowcase = ({ project, locale, index, labels }: ProjectShowcaseProp
               {project.impact[locale].map((item) => (
                 <span
                   key={item}
-                  className="rounded-lg border border-white/5 bg-white/5 px-2.5 py-1 text-xs text-[var(--color-text)]"
+                  className="rounded-lg border border-[var(--color-chip-border)] bg-[var(--color-chip-bg)] px-2.5 py-1 text-xs text-[var(--color-text)]"
                 >
                   {item}
                 </span>
@@ -125,7 +125,7 @@ const ProjectShowcase = ({ project, locale, index, labels }: ProjectShowcaseProp
             {project.tech.map((tech) => (
               <span
                 key={tech}
-                className="rounded-md border border-white/5 bg-black/20 px-2 py-0.5 text-[0.65rem] font-medium text-[var(--color-muted)]"
+                className="rounded-md border border-[var(--color-chip-border)] bg-[var(--color-panel-bg)] px-2 py-0.5 text-[0.65rem] font-medium text-[var(--color-muted)]"
               >
                 {tech}
               </span>

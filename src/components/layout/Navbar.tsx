@@ -6,6 +6,7 @@ import { Link, usePathname } from '@/i18n/navigation'
 import { cn } from '@/lib/utils'
 import { profile } from '@/lib/data/profile'
 import { Menu, X } from 'lucide-react'
+import { ThemeToggle } from '@/components/ui/ThemeToggle'
 
 const navItems = [
   { href: '/', key: 'home' },
@@ -49,7 +50,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[rgba(6,6,15,0.85)] backdrop-blur-xl">
+    <nav className="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-nav-bg)] backdrop-blur-xl transition-colors duration-300">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-3 px-4 sm:h-16 sm:px-6">
         <Link
           href="/"
@@ -78,6 +79,8 @@ const Navbar = () => {
         </ul>
 
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <ThemeToggle />
+
           <button
             type="button"
             onClick={handleToggleLocale}
@@ -103,7 +106,7 @@ const Navbar = () => {
       {/* Mobile / tablet menu */}
       <div
         className={cn(
-          'overflow-hidden border-t border-[var(--color-border)] bg-[rgba(6,6,15,0.95)] backdrop-blur-xl transition-all duration-300 lg:hidden',
+          'overflow-hidden border-t border-[var(--color-border)] bg-[var(--color-nav-mobile-bg)] backdrop-blur-xl transition-all duration-300 lg:hidden',
           isMenuOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0 border-t-transparent'
         )}
       >
@@ -115,8 +118,8 @@ const Navbar = () => {
                 className={cn(
                   'block rounded-lg px-3 py-3 text-sm transition-colors',
                   pathname === href
-                    ? 'bg-[rgba(124,58,237,0.12)] font-medium text-[var(--color-text)]'
-                    : 'text-[var(--color-muted)] hover:bg-white/5 hover:text-[var(--color-text)]'
+                    ? 'bg-[var(--color-accent-soft)] font-medium text-[var(--color-text)]'
+                    : 'text-[var(--color-muted)] hover:bg-[var(--color-hover-surface)] hover:text-[var(--color-text)]'
                 )}
                 tabIndex={isMenuOpen ? 0 : -1}
               >
