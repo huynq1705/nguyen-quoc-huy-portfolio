@@ -5,7 +5,7 @@ export const profile = {
   phone: '0367697285',
   location: { vi: 'Cầu Giấy, Hà Nội', en: 'Cau Giay, Hanoi' },
   birthDate: '17/05/2001',
-  github: '',
+  github: 'https://github.com/huynq1705',
   linkedin: '',
   experienceYears: 3,
 }
