@@ -156,6 +156,48 @@ const WebsiteVisual = () => (
   </div>
 )
 
+const QlxdVisual = () => (
+  <div className="flex h-full gap-2 p-3">
+    <div className="hidden w-14 shrink-0 flex-col gap-1.5 sm:flex">
+      {[1, 2, 3, 4, 5, 6].map((i) => (
+        <div key={i} className={`h-5 rounded ${i === 2 ? 'bg-blue-500/40 ring-1 ring-blue-400/40' : 'bg-white/5'}`} />
+      ))}
+    </div>
+    <div className="flex flex-1 flex-col gap-2">
+      <div className="grid grid-cols-3 gap-1.5">
+        {['Dự án', 'Giải ngân', 'Công việc'].map((_, i) => (
+          <div key={i} className="rounded-lg bg-white/5 p-2 ring-1 ring-white/5">
+            <div className="h-1.5 w-8 rounded bg-white/20" />
+            <div className="mt-1.5 h-4 rounded bg-blue-500/25" />
+          </div>
+        ))}
+      </div>
+      <div className="flex flex-1 gap-2">
+        <div className="flex-1 rounded-lg bg-white/5 p-2 ring-1 ring-white/10">
+          <div className="mb-2 h-2 w-20 rounded bg-white/20" />
+          <div className="space-y-1">
+            {[1, 2, 3, 4].map((i) => (
+              <div key={i} className="flex items-center gap-1">
+                <div className={`h-2 w-2 rounded-full ${i <= 2 ? 'bg-green-400/60' : 'bg-white/10'}`} />
+                <div className="h-2 flex-1 rounded bg-white/5" />
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="w-20 rounded-lg bg-cyan-500/10 p-2 ring-1 ring-cyan-400/20">
+          <div className="mb-1 text-[0.45rem] text-cyan-300/80">OCR</div>
+          <div className="h-12 rounded bg-white/5" />
+          <div className="mt-1 h-2 rounded bg-cyan-400/30" />
+        </div>
+      </div>
+      <div className="flex items-center gap-2 rounded-lg bg-violet-500/10 px-2 py-1.5 ring-1 ring-violet-400/20">
+        <div className="h-4 w-4 rounded-full bg-violet-400/40" />
+        <div className="h-2 flex-1 rounded bg-white/10" />
+      </div>
+    </div>
+  </div>
+)
+
 const CalendarVisual = () => (
   <div className="flex h-full flex-col gap-2 p-3">
     <div className="grid grid-cols-7 gap-1">
@@ -189,6 +231,7 @@ const visualMap: Record<string, VisualComponent> = {
   'mitu-cms': AdminVisual,
   'mitu-website': WebsiteVisual,
   'mitu-admin': CalendarVisual,
+  qlxd: QlxdVisual,
 }
 
 const ProjectVisual = ({ slug, category }: ProjectVisualProps) => {

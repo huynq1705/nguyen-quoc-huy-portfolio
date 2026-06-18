@@ -362,6 +362,79 @@ export const projects: Project[] = [
       ],
     },
   },
+  {
+    slug: 'qlxd',
+    category: 'enterprise',
+    featured: true,
+    period: { vi: '2025 – Hiện tại', en: '2025 – Present' },
+    title: {
+      vi: 'Hệ thống quản lý dự án đầu tư xây dựng',
+      en: 'Construction Investment Project Management',
+    },
+    tagline: {
+      vi: 'Nền tảng enterprise quản lý vòng đời dự án xây dựng',
+      en: 'Enterprise platform for construction project lifecycle management',
+    },
+    description: {
+      vi: 'Ứng dụng web quản lý toàn diện dự án đầu tư xây dựng: hợp đồng, công việc, giải ngân, báo cáo tổng hợp, quy trình phê duyệt và dashboard điều hành. Hỗ trợ 7 vai trò người dùng với routing theo quyền, OCR hợp đồng PDF và trợ lý AI streaming.',
+      en: 'Comprehensive web app for construction investment projects: contracts, tasks, disbursements, summary reports, approval workflows, and executive dashboards. Supports 7 user roles with permission-based routing, PDF contract OCR, and streaming AI assistant.',
+    },
+    highlights: {
+      vi: [
+        '22 module nghiệp vụ, 117+ routes, RBAC 7 vai trò (admin, user, kế toán, chủ đầu tư…)',
+        'OCR hợp đồng PDF — trích xuất nhà thầu, giá trị, điều khoản vào form tự động',
+        'Workflow engine: cây bước phê duyệt, form template động, import Excel',
+        'Dashboard điều hành + báo cáo tổng hợp, giải ngân, kế hoạch tháng',
+        'Trợ lý AI chatbot streaming tích hợp sidebar, feature flag theo tenant',
+        'BFF Next.js 165+ API routes, TanStack Query infinite scroll, Zustand stores',
+      ],
+      en: [
+        '22 business modules, 117+ routes, RBAC with 7 roles (admin, user, accounting, investor…)',
+        'PDF contract OCR — auto-extract contractors, values, clauses into forms',
+        'Workflow engine: approval step tree, dynamic form templates, Excel import',
+        'Executive dashboard + summary reports, disbursements, monthly plans',
+        'Streaming AI chatbot assistant in sidebar, tenant feature flags',
+        'Next.js BFF with 165+ API routes, TanStack Query infinite scroll, Zustand stores',
+      ],
+    },
+    tech: ['Next.js 15', 'React 19', 'TypeScript', 'Tailwind CSS 4', 'HeroUI', 'TanStack Query', 'Zustand', 'next-intl', 'Zod', 'React Hook Form'],
+    role: {
+      vi: 'Frontend Developer — phát triển module nghiệp vụ, OCR UI, workflow forms, tích hợp BFF',
+      en: 'Frontend Developer — business modules, OCR UI, workflow forms, BFF integration',
+    },
+    problem: {
+      vi: 'Tổ chức quản lý nhiều dự án xây dựng cần hệ thống thống nhất: theo dõi hợp đồng, công việc pháp lý, giải ngân, báo cáo — với phân quyền phức tạp theo vai trò.',
+      en: 'Organizations managing multiple construction projects need a unified system: contract tracking, legal tasks, disbursements, reports — with complex role-based permissions.',
+    },
+    solution: {
+      vi: 'Xây dựng Next.js App Router với routing theo locale + role, feature modules theo domain (projects, tasks, workflows, disbursements), OCR viewer tích hợp form, và chatbot AI streaming.',
+      en: 'Built Next.js App Router with locale + role routing, domain feature modules (projects, tasks, workflows, disbursements), OCR viewer integrated with forms, and streaming AI chatbot.',
+    },
+    impact: {
+      vi: [
+        '82.000+ dòng code TypeScript',
+        '117+ routes, 22 module nghiệp vụ',
+        '165+ BFF API routes',
+      ],
+      en: [
+        '82,000+ lines of TypeScript',
+        '117+ routes, 22 business modules',
+        '165+ BFF API routes',
+      ],
+    },
+    lessons: {
+      vi: [
+        'Role-scoped middleware cần đồng bộ với cookie JWT refresh',
+        'OCR confirm flow: preview layout + field mapping trước khi lưu',
+        'Infinite query + URL searchParams cho danh sách dự án lớn',
+      ],
+      en: [
+        'Role-scoped middleware must sync with JWT refresh cookies',
+        'OCR confirm flow: layout preview + field mapping before save',
+        'Infinite query + URL searchParams for large project lists',
+      ],
+    },
+  },
 ]
 
 export const getProject = (slug: string) => projects.find((p) => p.slug === slug)

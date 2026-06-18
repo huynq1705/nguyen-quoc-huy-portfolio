@@ -31,6 +31,7 @@ export const experiences: Experience[] = [
       vi: [
         'Triển khai toàn bộ mã nguồn frontend cho hệ sinh thái MRAG Chat gồm 3 tầng ứng dụng: User (chat AI/RAG), Admin (cấu hình use case, knowledge base), Superadmin (quản trị multi-tenant, credit, provider)',
         'Phát triển MCBuilder — nền tảng AI tạo presentation: upload tài liệu/prompt, SSE streaming outline, trình chỉnh slide với TipTap/ProseMirror/Monaco, export PDF/PPTX',
+        'Xây dựng hệ thống quản lý dự án đầu tư xây dựng — 22 module, RBAC 7 vai trò, OCR hợp đồng PDF, workflow phê duyệt, dashboard điều hành, trợ lý AI streaming',
         'Xây dựng UI chat streaming token-by-token, document viewer 5+ định dạng, agent processing tree, white-label branding cho 2000+ users tại Nhật Bản',
         'Tích hợp Redux Toolkit + React Query, i18next (EN/JA), Framer Motion cho micro-interactions',
         'Làm việc trực tiếp với nhóm Design, BA, Tester theo mô hình Agile Scrum',
@@ -38,13 +39,14 @@ export const experiences: Experience[] = [
       en: [
         'Full frontend implementation for the MRAG Chat ecosystem across 3 app tiers: User (AI/RAG chat), Admin (use case & knowledge base config), Superadmin (multi-tenant, credit, provider management)',
         'Developed MCBuilder — AI presentation platform: document/prompt upload, SSE streaming outline, slide editor with TipTap/ProseMirror/Monaco, PDF/PPTX export',
+        'Built construction investment project management system — 22 modules, 7-role RBAC, PDF contract OCR, approval workflows, executive dashboard, streaming AI assistant',
         'Built streaming chat UI token-by-token, 5+ format document viewer, agent processing tree, white-label branding for 2000+ users in Japan',
         'Integrated Redux Toolkit + React Query, i18next (EN/JA), Framer Motion for micro-interactions',
         'Collaborated directly with Design, BA, and Tester teams in Agile Scrum',
       ],
     },
-    tech: ['Next.js 16', 'React 19', 'Zustand', 'Redux Toolkit', 'TanStack Query', 'TipTap', 'Monaco', 'SSE', 'next-intl', 'Framer Motion'],
-    projects: { vi: ['MRAG Chat Platform', 'MCBuilder'], en: ['MRAG Chat Platform', 'MCBuilder'] },
+    tech: ['Next.js 16', 'React 19', 'Zustand', 'Redux Toolkit', 'TanStack Query', 'HeroUI', 'TipTap', 'Monaco', 'SSE', 'next-intl', 'Framer Motion'],
+    projects: { vi: ['MRAG Chat Platform', 'MCBuilder', 'QLXD PM'], en: ['MRAG Chat Platform', 'MCBuilder', 'QLXD PM'] },
   },
   {
     period: { vi: '08/2024 – 05/2025', en: 'Aug 2024 – May 2025' },
@@ -214,6 +216,33 @@ export const featuredProjects: FeaturedProject[] = [
     },
     tech: ['Next.js 14', 'React 18', 'Vite 5', 'MUI', 'Ant Design', 'Redux Toolkit', 'React Query', 'ECharts', 'Tailwind CSS'],
   },
+  {
+    name: 'QLXD PM',
+    slug: 'qlxd',
+    period: { vi: '2025 – Hiện tại', en: '2025 – Present' },
+    company: { vi: 'HDC-Flowtech', en: 'HDC-Flowtech' },
+    description: {
+      vi: 'Hệ thống quản lý dự án đầu tư xây dựng enterprise: hợp đồng, công việc pháp lý, giải ngân, báo cáo tổng hợp, quy trình phê duyệt và dashboard điều hành. RBAC 7 vai trò, OCR hợp đồng PDF, trợ lý AI streaming.',
+      en: 'Enterprise construction investment project management: contracts, legal tasks, disbursements, summary reports, approval workflows, and executive dashboards. 7-role RBAC, PDF contract OCR, streaming AI assistant.',
+    },
+    highlights: {
+      vi: [
+        '22 module nghiệp vụ, 117+ routes, middleware phân quyền theo role + locale',
+        'OCR hợp đồng PDF với layout viewer và confirm modal trước khi lưu',
+        'Workflow engine: cây bước phê duyệt, form template động, import Excel',
+        'BFF Next.js 165+ API routes, TanStack Query infinite scroll',
+        'Chatbot AI streaming tích hợp sidebar với feature flag theo tenant',
+      ],
+      en: [
+        '22 business modules, 117+ routes, role + locale permission middleware',
+        'PDF contract OCR with layout viewer and confirm modal before save',
+        'Workflow engine: approval step tree, dynamic form templates, Excel import',
+        'Next.js BFF with 165+ API routes, TanStack Query infinite scroll',
+        'Streaming AI chatbot in sidebar with tenant feature flags',
+      ],
+    },
+    tech: ['Next.js 15', 'React 19', 'TypeScript', 'Tailwind CSS 4', 'HeroUI', 'TanStack Query', 'Zustand', 'next-intl', 'Zod'],
+  },
 ]
 
 export const education = {
@@ -240,7 +269,7 @@ export const skillCategories: SkillCategory[] = [
   },
   {
     label: { vi: 'UI & Styling', en: 'UI & Styling' },
-    items: ['Tailwind CSS', 'shadcn/ui', 'Radix UI', 'MUI', 'Ant Design', 'Framer Motion'],
+    items: ['Tailwind CSS', 'shadcn/ui', 'Radix UI', 'HeroUI', 'MUI', 'Ant Design', 'Framer Motion'],
   },
   {
     label: { vi: 'State & Data', en: 'State & Data' },
@@ -265,6 +294,6 @@ export const skillCategories: SkillCategory[] = [
 ]
 
 export const about = {
-  vi: 'Tôi có 3 năm kinh nghiệm ở vị trí Lập trình viên Frontend, chuyên xây dựng giao diện cho các sản phẩm AI SaaS enterprise và phần mềm quản lý. Đã triển khai frontend cho hệ sinh thái MRAG Chat (2000+ users), MCBuilder (AI presentation), và Mitu CMS (spa/salon management). Mục tiêu hướng tới Fullstack Developer trong 3–5 năm tới.',
-  en: 'I have 3 years of experience as a Frontend Developer, specializing in AI SaaS enterprise products and management software. Implemented frontend for the MRAG Chat ecosystem (2000+ users), MCBuilder (AI presentations), and Mitu CMS (spa/salon management). Aiming to become a Fullstack Developer within 3–5 years.',
+  vi: 'Tôi có 3 năm kinh nghiệm ở vị trí Lập trình viên Frontend, chuyên xây dựng giao diện cho các sản phẩm AI SaaS enterprise và phần mềm quản lý. Đã triển khai frontend cho hệ sinh thái MRAG Chat (2000+ users), MCBuilder (AI presentation), hệ thống quản lý dự án xây dựng QLXD PM, và Mitu CMS (spa/salon management). Mục tiêu hướng tới Fullstack Developer trong 3–5 năm tới.',
+  en: 'I have 3 years of experience as a Frontend Developer, specializing in AI SaaS enterprise products and management software. Implemented frontend for the MRAG Chat ecosystem (2000+ users), MCBuilder (AI presentations), QLXD PM construction project management, and Mitu CMS (spa/salon management). Aiming to become a Fullstack Developer within 3–5 years.',
 }

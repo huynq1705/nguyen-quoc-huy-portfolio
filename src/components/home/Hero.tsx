@@ -42,7 +42,7 @@ const Hero = ({ locale }: HeroProps) => {
   }, [fullText])
 
   const stats = [
-    { num: '7', label: ts('projects') },
+    { num: '8', label: ts('projects') },
     { num: '3+', label: ts('experience') },
     { num: '2', label: ts('ecosystems') },
     { num: 'EN/JA', label: ts('i18n') },
